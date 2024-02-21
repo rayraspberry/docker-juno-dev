@@ -1,0 +1,3 @@
+FROM cosmwasm/wasmd:latest
+
+
