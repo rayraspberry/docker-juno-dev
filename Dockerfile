@@ -1,6 +1,27 @@
-FROM  ubuntu:latest
+# Use official node image as the base image
+FROM node:latest as build
+
+# Set the working directory
+WORKDIR /usr/local/app
+
+# Add the source code to app
+COPY ./junod-frontend-app/ /usr/local/app/
+
+# Install all the dependencies
+RUN npm install
+
+# Generate the build of the application
+RUN npm run build
+
+
+FROM  ubuntu/nginx:latest
 
 RUN apt-get clean && apt-get update
+
+COPY junod-frontend-app/nginx.conf /etc/nginx/nginx.conf
+
+COPY --from=build /usr/local/app/dist/junod-frontend-app/browser /usr/share/nginx/html
+
 # Install Node.js
 RUN apt-get install --yes nodejs
 RUN apt-get install --yes npm
@@ -47,6 +68,16 @@ RUN npm install
 # Bundle app source
 COPY ./nodejs-docker-web-app .
 
-EXPOSE 8080
+EXPOSE 8080 80
 
-CMD ["npm", "start"]
+
+CMD npm start && service nginx restart
+
+
+
+
+
+
+
+
+

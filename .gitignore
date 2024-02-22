@@ -31,3 +31,6 @@ contracts/*/schema
 nodejs-docker-web-app/node_modules
 nodejs-docker-web-app/npm-debug.log
 nodejs-docker-web-app/.env
+
+# junod Frontend app
+junod-frontend-app/node_modules
