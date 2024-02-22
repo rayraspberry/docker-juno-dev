@@ -26,3 +26,8 @@ tarpaulin-report.*
 
 packages/*/schema
 contracts/*/schema
+
+# nodejs app
+nodejs-docker-web-app/node_modules
+nodejs-docker-web-app/npm-debug.log
+nodejs-docker-web-app/.env
