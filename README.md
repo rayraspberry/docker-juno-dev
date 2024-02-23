@@ -7,10 +7,12 @@ Development environment for Working on Juno blockchain
 
 ## Usage
 
-From Linux or MacOS:
+`docker build . -t node-web-app-with-junod:v2.0.0`
 
-`./junod.sh query gov votes 337`
+then
 
-From Windows:
+`docker run -d -p 8080:80 -p 8081:8080 node-web-app-with-junod:v2.0.0`
 
-`juno.bat query gov votes 337`
+then
+
+`http://localhost:8001/`

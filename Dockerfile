@@ -23,15 +23,18 @@ COPY junod-frontend-app/nginx.conf /etc/nginx/nginx.conf
 COPY --from=build /usr/local/app/dist/junod-frontend-app/browser /usr/share/nginx/html
 
 # Install Node.js
-RUN apt-get install --yes nodejs
-RUN apt-get install --yes npm
+#RUN apt-get install --yes nodejs
+WORKDIR /
+RUN apt-get install --yes wget 
+RUN wget https://deb.nodesource.com/setup_21.x
+RUN /bin/sh ./setup_21.x
+RUN apt-get install -y nodejs
 
 # root as working directory
 WORKDIR /
 RUN apt-get install make
 RUN apt-get install --yes build-essential
 RUN apt-get install gcc 
-RUN apt-get install --yes wget 
 RUN apt-get install --yes git
 RUN apt-get install --yes jq
 
@@ -71,7 +74,8 @@ COPY ./nodejs-docker-web-app .
 EXPOSE 8080 80
 
 
-CMD npm start && service nginx restart
+CMD npm start
+RUN service nginx restart
 
 
 
