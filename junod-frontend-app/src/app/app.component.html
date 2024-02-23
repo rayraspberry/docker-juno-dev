@@ -1,0 +1,21 @@
+<div class="card">
+  <p-megaMenu styleClass="flex">
+    <ng-template pTemplate="start">
+      <div style="display: flex; align-items: center">
+        <img src="assets/Juno_logo.png" height="40" class="mr-2" />
+        <span><b style="font-size: larger">Junod Web Interface</b></span>
+      </div>
+    </ng-template>
+    <!-- <ng-template pTemplate="end"> Junod Web Interface </ng-template> -->
+  </p-megaMenu>
+</div>
+<!-- <div class="card" style="white-space: pre-wrap">{{ data }}</div> -->
+<div class="card">
+  <p>Type "junod" to get the root for the available commands</p>
+  <p-terminal
+    #terminal
+    welcomeMessage="Welcone to Junod Web Interface"
+    prompt="noob $"
+  ></p-terminal>
+</div>
+<router-outlet></router-outlet>
